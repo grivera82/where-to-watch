@@ -8,6 +8,7 @@ export interface SearchResult {
   imdb_id?: string;
   tmdb_id?: number;
   tmdb_type?: string;
+  poster?: string;   // optional high-quality poster for seeded popular items
 }
 
 export interface Source {

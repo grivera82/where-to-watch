@@ -9,13 +9,50 @@ import SearchBar from "@/components/SearchBar";
 import DetailModal from "@/components/DetailModal";
 
 // === Seeded Popular Titles (real WatchMode IDs, zero API calls on load) ===
+// Posters are included so the Popular grid looks great (fetched once during development)
 const POPULAR_SEED: SearchResult[] = [
-  { id: 1644435, name: "Dune: Part Two", year: 2024, type: "movie" },
-  { id: 538646, name: "Shōgun", year: 2024, type: "tv_series" },
-  { id: 1643798, name: "Oppenheimer", year: 2023, type: "movie" },
-  { id: 1496273, name: "Dune: Part One", year: 2021, type: "movie" },
-  { id: 3173903, name: "Breaking Bad", year: 2008, type: "tv_series" },
-  { id: 3184679, name: "The Bear", year: 2022, type: "tv_series" },
+  {
+    id: 1644435,
+    name: "Dune: Part Two",
+    year: 2024,
+    type: "movie",
+    poster: "https://image.tmdb.org/t/p/w780/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg",
+  },
+  {
+    id: 538646,
+    name: "Shōgun",
+    year: 2024,
+    type: "tv_series",
+    poster: "https://image.tmdb.org/t/p/w780/7O4iVfOMQmdCSxhOg1WnzG1AgYT.jpg",
+  },
+  {
+    id: 1643798,
+    name: "Oppenheimer",
+    year: 2023,
+    type: "movie",
+    poster: "https://image.tmdb.org/t/p/w780/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+  },
+  {
+    id: 1496273,
+    name: "Dune: Part One",
+    year: 2021,
+    type: "movie",
+    poster: "https://image.tmdb.org/t/p/w780/gDzOcq0pfeCeqMBwKIJlSmQpjkZ.jpg",
+  },
+  {
+    id: 3173903,
+    name: "Breaking Bad",
+    year: 2008,
+    type: "tv_series",
+    poster: "https://image.tmdb.org/t/p/w780/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg",
+  },
+  {
+    id: 3184679,
+    name: "The Bear",
+    year: 2022,
+    type: "tv_series",
+    poster: "https://image.tmdb.org/t/p/w780/eKfVzzEazSIjJMrw9ADa2x8ksLz.jpg",
+  },
 ];
 
 export default function Where2Watch() {

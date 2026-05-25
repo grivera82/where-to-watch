@@ -10,28 +10,43 @@ interface MovieCardProps {
 
 export default function MovieCard({ item, onClick }: MovieCardProps) {
   const isMovie = item.type === "movie" || item.type === "short_film";
+  const hasPoster = !!item.poster;
 
   return (
     <button
       onClick={() => onClick(item)}
       className="group relative flex h-full w-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/60 text-left shadow-xl transition-all duration-200 hover:-translate-y-0.5 hover:border-white/20 hover:bg-zinc-800/70 hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/60 active:scale-[0.985]"
     >
-      {/* Visual header area with gradient + icon */}
-      <div className="relative flex h-44 w-full items-center justify-center overflow-hidden bg-zinc-950">
-        <div className="absolute inset-0 bg-[radial-gradient(#27272a_0.6px,transparent_1px)] bg-[length:4px_4px] opacity-60" />
-        
-        <div className="relative flex flex-col items-center gap-3 text-zinc-400 transition-transform duration-300 group-hover:scale-105">
-          {isMovie ? (
-            <Film className="h-9 w-9" strokeWidth={1.5} />
-          ) : (
-            <Tv className="h-9 w-9" strokeWidth={1.5} />
-          )}
-          <div className="font-mono text-[10px] uppercase tracking-[3px] text-zinc-500">
-            {isMovie ? "MOVIE" : "SERIES"}
-          </div>
-        </div>
+      {/* Visual header area */}
+      <div className="relative h-44 w-full overflow-hidden bg-zinc-950">
+        {hasPoster ? (
+          <>
+            <img
+              src={item.poster}
+              alt={item.name}
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            {/* Subtle bottom gradient for polish */}
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/60 to-transparent" />
+          </>
+        ) : (
+          /* Fallback icon design (used for search results) */
+          <>
+            <div className="absolute inset-0 bg-[radial-gradient(#27272a_0.6px,transparent_1px)] bg-[length:4px_4px] opacity-60" />
+            <div className="relative flex h-full flex-col items-center justify-center gap-3 text-zinc-400 transition-transform duration-300 group-hover:scale-105">
+              {isMovie ? (
+                <Film className="h-9 w-9" strokeWidth={1.5} />
+              ) : (
+                <Tv className="h-9 w-9" strokeWidth={1.5} />
+              )}
+              <div className="font-mono text-[10px] uppercase tracking-[3px] text-zinc-500">
+                {isMovie ? "MOVIE" : "SERIES"}
+              </div>
+            </div>
+          </>
+        )}
 
-        {/* Subtle play affordance on hover */}
+        {/* Play affordance on hover */}
         <div className="absolute bottom-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/70 text-white opacity-0 transition-all group-hover:opacity-100">
           <Play className="ml-0.5 h-3.5 w-3.5" fill="currentColor" />
         </div>
