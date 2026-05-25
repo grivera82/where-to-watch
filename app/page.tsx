@@ -86,6 +86,46 @@ export default function Where2Watch() {
       });
   }, []);
 
+  // Simple in-memory cache for posters fetched during search (avoids duplicate calls)
+  const posterCacheRef = useRef<Map<number, string>>(new Map());
+
+  // Enrich search results with posters by calling the details endpoint
+  const enrichSearchResultsWithPosters = useCallback(
+    async (basicResults: SearchResult[], signal?: AbortSignal): Promise<SearchResult[]> => {
+      const toEnrich = basicResults.slice(0, 9); // Limit to first 9 for API budget
+      const otherResults = basicResults.slice(9);
+
+      const enrichmentPromises = toEnrich.map(async (item) => {
+        // Use cache if we already have the poster for this title
+        if (posterCacheRef.current.has(item.id)) {
+          return { ...item, poster: posterCacheRef.current.get(item.id) };
+        }
+
+        try {
+          const details = await fetchJSON<TitleDetails>(
+            `/api/details/${item.id}`,
+            signal
+          );
+
+          const poster = details.posterLarge || details.posterMedium || details.poster;
+
+          if (poster) {
+            posterCacheRef.current.set(item.id, poster);
+          }
+
+          return { ...item, poster };
+        } catch {
+          // If details fail, just return the basic result (icon fallback)
+          return item;
+        }
+      });
+
+      const enriched = await Promise.all(enrichmentPromises);
+      return [...enriched, ...otherResults];
+    },
+    []
+  );
+
   // Core search logic (stable)
   const performSearch = useCallback(async (q: string) => {
     if (!q || q.trim().length < 2) {
@@ -106,7 +146,17 @@ export default function Where2Watch() {
         `/api/search?q=${encodeURIComponent(q)}`,
         controller.signal
       );
-      setResults(data.title_results || []);
+
+      const basicResults = data.title_results || [];
+      setResults(basicResults);
+
+      // Fire-and-forget enrichment (non-blocking)
+      // This will update the results again once posters are loaded
+      enrichSearchResultsWithPosters(basicResults, controller.signal).then((enrichedResults) => {
+        if (!controller.signal.aborted) {
+          setResults(enrichedResults);
+        }
+      });
     } catch (err: unknown) {
       const error = err as { name?: string; message?: string };
       if (error.name !== "AbortError") {
@@ -116,7 +166,7 @@ export default function Where2Watch() {
     } finally {
       setIsSearching(false);
     }
-  }, []);
+  }, [enrichSearchResultsWithPosters]);
 
   // Stable debounced wrapper (created once, never recreated)
   // eslint-disable-next-line react-hooks/refs

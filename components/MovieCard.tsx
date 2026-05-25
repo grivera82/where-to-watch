@@ -30,9 +30,13 @@ export default function MovieCard({ item, onClick }: MovieCardProps) {
             <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/60 to-transparent" />
           </>
         ) : (
-          /* Fallback icon design (used for search results) */
+          /* Fallback + loading state for search results */
           <>
             <div className="absolute inset-0 bg-[radial-gradient(#27272a_0.6px,transparent_1px)] bg-[length:4px_4px] opacity-60" />
+            
+            {/* Subtle shimmer while poster is being fetched for search results */}
+            <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+
             <div className="relative flex h-full flex-col items-center justify-center gap-3 text-zinc-400 transition-transform duration-300 group-hover:scale-105">
               {isMovie ? (
                 <Film className="h-9 w-9" strokeWidth={1.5} />
