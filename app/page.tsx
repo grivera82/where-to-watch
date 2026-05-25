@@ -261,14 +261,6 @@ export default function Where2Watch() {
             >
               <Sparkles className="h-3.5 w-3.5" /> I’m feeling lucky
             </button>
-            <a
-              href="https://api.watchmode.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs text-white/50 hover:text-white/80"
-            >
-              API
-            </a>
           </div>
         </div>
       </nav>
