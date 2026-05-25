@@ -85,10 +85,10 @@ export default function DetailModal({
           onClick={(e) => e.stopPropagation()}
           className="relative flex max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-950 shadow-2xl"
         >
-          {/* Close button - bigger + better positioned on mobile */}
+          {/* Close button - more inset on mobile so it's fully visible */}
           <button
             onClick={onClose}
-            className="absolute right-5 top-5 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-black/75 text-white/85 backdrop-blur-sm transition active:bg-black/90 md:right-4 md:top-4 md:h-9 md:w-9"
+            className="absolute right-6 top-6 z-20 flex h-11 w-11 items-center justify-center rounded-full bg-black/85 text-white backdrop-blur-sm transition active:bg-black/95 md:right-4 md:top-4 md:h-9 md:w-9"
             aria-label="Close"
           >
             <X className="h-5 w-5 md:h-4 md:w-4" />
