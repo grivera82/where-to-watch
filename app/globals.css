@@ -65,7 +65,19 @@ button:has(.group-hover\:text-indigo-400):active {
   .max-w-4xl {
     max-width: 100%;
     margin: 0;
-    border-radius: 20px;
+    border-radius: 16px;
+  }
+}
+
+/* Better mobile touch targets and active states */
+@media (max-width: 640px) {
+  button:active {
+    transform: scale(0.985);
+  }
+  
+  /* Ensure good tap targets */
+  a, button {
+    min-height: 44px;
   }
 }
 

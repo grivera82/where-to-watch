@@ -266,15 +266,15 @@ export default function Where2Watch() {
       </nav>
 
       {/* Hero */}
-      <div className="mx-auto max-w-6xl px-6 pt-14 pb-10">
+      <div className="mx-auto max-w-6xl px-5 sm:px-6 pt-10 pb-8 sm:pt-14 sm:pb-10">
         <div className="max-w-2xl">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/60">
             REAL-TIME STREAMING AVAILABILITY
           </div>
-          <h1 className="mt-4 text-6xl font-semibold tracking-tighter md:text-7xl">
+          <h1 className="mt-4 text-5xl font-semibold tracking-tighter sm:text-6xl md:text-7xl">
             Find where to<br />watch anything.
           </h1>
-          <p className="mt-4 text-xl text-white/70">
+          <p className="mt-4 text-lg text-white/70 sm:text-xl">
             Instant search across thousands of movies and TV shows.
             See every legal streaming, rental, and purchase option in the US.
           </p>
@@ -291,14 +291,14 @@ export default function Where2Watch() {
             placeholder="Search Dune, Shōgun, The Bear…"
           />
           <div className="mt-2 text-[10px] text-white/40">
-            Press <kbd className="rounded bg-white/10 px-1">/</kbd> to search •{" "}
-            <kbd className="rounded bg-white/10 px-1">⌘K</kbd>
+            Press <kbd className="rounded bg-white/10 px-1">/</kbd> to search
+            <span className="hidden md:inline"> • <kbd className="rounded bg-white/10 px-1">⌘K</kbd></span>
           </div>
         </div>
       </div>
 
       {/* Results / Popular section */}
-      <div className="mx-auto max-w-6xl px-6 pb-24">
+      <div className="mx-auto max-w-6xl px-5 sm:px-6 pb-20 sm:pb-24">
         <div className="mb-4 flex items-end justify-between">
           <div>
             <div className="text-sm font-medium text-white/60">

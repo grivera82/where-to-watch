@@ -57,21 +57,21 @@ export default function MovieCard({ item, onClick }: MovieCardProps) {
       </div>
 
       {/* Content */}
-      <div className="flex flex-1 flex-col justify-between p-4">
+      <div className="flex flex-1 flex-col justify-between p-3 sm:p-4">
         <div>
-          <div className="line-clamp-2 text-[15px] font-semibold leading-tight text-white">
+          <div className="line-clamp-2 text-[14px] font-semibold leading-tight text-white sm:text-[15px]">
             {item.name}
           </div>
           {item.year && (
-            <div className="mt-1 text-xs text-zinc-400">{item.year}</div>
+            <div className="mt-0.5 text-[10px] text-zinc-400 sm:mt-1 sm:text-xs">{item.year}</div>
           )}
         </div>
 
-        <div className="mt-3 flex items-center justify-between text-[11px]">
-          <div className="rounded-full border border-white/10 px-2.5 py-px text-zinc-400">
+        <div className="mt-2 flex items-center justify-between text-[10px] sm:mt-3 sm:text-[11px]">
+          <div className="rounded-full border border-white/10 px-2 py-px text-zinc-400 sm:px-2.5">
             {item.type.replace("_", " ")}
           </div>
-          <div className="font-mono text-[10px] text-indigo-400/70 group-hover:text-indigo-400">
+          <div className="font-mono text-[9px] text-indigo-400/70 group-hover:text-indigo-400 sm:text-[10px]">
             SEE MORE →
           </div>
         </div>

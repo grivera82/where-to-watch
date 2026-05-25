@@ -84,13 +84,13 @@ export default function DetailModal({
             )}
             <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/70 to-zinc-950" />
 
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+            <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 md:p-8">
               <div className="flex flex-wrap items-end gap-x-3 gap-y-1">
-                <h2 className="text-3xl font-semibold tracking-tighter text-white md:text-4xl">
+                <h2 className="text-2xl font-semibold tracking-tighter text-white sm:text-3xl md:text-4xl">
                   {details?.title || item.name}
                 </h2>
                 {yearDisplay && (
-                  <div className="pb-1 text-xl text-white/60">{yearDisplay}</div>
+                  <div className="pb-1 text-lg text-white/60 sm:text-xl">{yearDisplay}</div>
                 )}
               </div>
               {details?.genre_names && details.genre_names.length > 0 && (
@@ -109,7 +109,7 @@ export default function DetailModal({
           </div>
 
           {/* Body */}
-          <div className="p-6 md:p-8">
+          <div className="p-5 sm:p-6 md:p-8">
             {isLoading && (
               <div className="flex h-40 items-center justify-center text-sm text-white/60">
                 Loading details and streaming availability…
@@ -126,7 +126,7 @@ export default function DetailModal({
             )}
 
             {!isLoading && !error && details && (
-              <div className="grid gap-8 md:grid-cols-5">
+              <div className="grid gap-6 sm:gap-8 md:grid-cols-5">
                 {/* Left column — plot + meta */}
                 <div className="md:col-span-3">
                   {details.plot_overview && (
