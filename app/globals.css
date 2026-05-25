@@ -32,6 +32,9 @@ body {
 /* Modal scroll lock helper */
 body.modal-open {
   overflow: hidden;
+  /* Prevent background scrolling on mobile */
+  position: fixed;
+  width: 100%;
 }
 
 /* Subtle grain / texture on dark panels */
@@ -67,6 +70,12 @@ button:has(.group-hover\:text-indigo-400):active {
     margin: 0;
     border-radius: 16px;
   }
+}
+
+/* Better modal scrolling on mobile */
+.modal-content {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
 /* Better mobile touch targets and active states */

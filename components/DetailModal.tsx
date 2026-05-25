@@ -33,6 +33,30 @@ export default function DetailModal({
     return () => window.removeEventListener("keydown", onKey);
   }, [onClose]);
 
+  // Lock body scroll when modal is open (prevents background scrolling on mobile)
+  useEffect(() => {
+    if (!item) return;
+
+    const scrollY = window.scrollY;
+
+    // Lock scroll
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
+
+    return () => {
+      // Restore scroll
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+
+      // Restore scroll position
+      window.scrollTo(0, scrollY);
+    };
+  }, [item]);
+
   if (!item) return null;
 
   const grouped = details ? groupSourcesByType(details.sources) : null;
@@ -59,7 +83,7 @@ export default function DetailModal({
           exit={{ opacity: 0, scale: 0.96, y: 10 }}
           transition={{ type: "spring", damping: 26, stiffness: 280 }}
           onClick={(e) => e.stopPropagation()}
-          className="relative w-full max-w-4xl overflow-hidden rounded-3xl border border-white/10 bg-zinc-950 shadow-2xl"
+          className="relative flex max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-950 shadow-2xl"
         >
           {/* Close button */}
           <button
@@ -70,8 +94,8 @@ export default function DetailModal({
             <X className="h-4 w-4" />
           </button>
 
-          {/* Hero image area */}
-          <div className="relative h-56 w-full bg-zinc-900 md:h-72">
+          {/* Hero image area (stays fixed while content below scrolls) */}
+          <div className="relative h-56 w-full flex-shrink-0 bg-zinc-900 md:h-72">
             {poster ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
@@ -108,8 +132,8 @@ export default function DetailModal({
             </div>
           </div>
 
-          {/* Body */}
-          <div className="p-5 sm:p-6 md:p-8">
+          {/* Scrollable content area */}
+          <div className="flex-1 overflow-y-auto overscroll-contain p-5 sm:p-6 md:p-8">
             {isLoading && (
               <div className="flex h-40 items-center justify-center text-sm text-white/60">
                 Loading details and streaming availability…
@@ -255,8 +279,8 @@ export default function DetailModal({
             )}
           </div>
 
-          {/* Footer */}
-          <div className="border-t border-white/10 bg-zinc-900/40 px-6 py-3 text-center text-[10px] text-white/40">
+          {/* Footer - stays sticky at bottom */}
+          <div className="flex-shrink-0 border-t border-white/10 bg-zinc-900/40 px-6 py-3 text-center text-[10px] text-white/40">
             Data provided by Watchmode • Links go to official sources • US availability shown
           </div>
         </motion.div>
