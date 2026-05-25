@@ -85,13 +85,13 @@ export default function DetailModal({
           onClick={(e) => e.stopPropagation()}
           className="relative flex max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-950 shadow-2xl"
         >
-          {/* Close button */}
+          {/* Close button - bigger + better positioned on mobile */}
           <button
             onClick={onClose}
-            className="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/60 text-white/70 transition hover:bg-black/80 hover:text-white"
+            className="absolute right-5 top-5 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-black/75 text-white/85 backdrop-blur-sm transition active:bg-black/90 md:right-4 md:top-4 md:h-9 md:w-9"
             aria-label="Close"
           >
-            <X className="h-4 w-4" />
+            <X className="h-5 w-5 md:h-4 md:w-4" />
           </button>
 
           {/* Hero image area (stays fixed while content below scrolls) */}
