@@ -342,8 +342,9 @@ export default function Where2Watch() {
         </div>
 
         {/* Footer note */}
-        <div className="mt-12 text-center text-[11px] text-white/30">
-          Availability data from Watchmode • US region • Links open official sources
+        <div className="mt-12 space-y-1 text-center text-[11px] text-white/30">
+          <div>Availability data from Watchmode • US region • Links open official sources</div>
+          <div>Made by Jose Gabriel Rivera ☕</div>
         </div>
       </div>
 
