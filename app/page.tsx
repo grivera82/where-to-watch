@@ -344,7 +344,18 @@ export default function Where2Watch() {
         {/* Footer note */}
         <div className="mt-12 space-y-1 text-center text-[11px] text-white/30">
           <div>Availability data from Watchmode • US region • Links open official sources</div>
-          <div>Made by Jose Gabriel Rivera ☕️</div>
+          <div className="flex items-center justify-center gap-1">
+            Made by Jose Gabriel Rivera
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              className="inline-block h-3.5 w-3.5 text-amber-500"
+              fill="currentColor"
+            >
+              <path d="M18 8h-1V7a5 5 0 0 0-10 0v1H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2zM9 7a3 3 0 0 1 6 0v1H9V7z" />
+              <path d="M20 10h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1" />
+            </svg>
+          </div>
         </div>
       </div>
 
