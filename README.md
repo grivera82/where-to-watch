@@ -2,7 +2,7 @@
 
 A beautiful, fast, cinematic web app to instantly find where to stream, rent, or buy any movie or TV show — powered by the [Watchmode API](https://api.watchmode.com/).
 
-![where2watch preview](https://placehold.co/1200x630/0a0a0a/666?text=where2watch%0AReal-time+US+streaming+availability)
+![where2watch preview](assets/screenshot.png)
 
 ## About
 
