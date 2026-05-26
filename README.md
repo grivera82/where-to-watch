@@ -4,6 +4,20 @@ A beautiful, fast, cinematic web app to instantly find where to stream, rent, or
 
 ![where2watch preview](https://placehold.co/1200x630/0a0a0a/666?text=where2watch%0AReal-time+US+streaming+availability)
 
+## About
+
+**where2watch** is a modern, visually polished web application that helps you quickly discover where to legally watch movies and TV shows. It provides real-time streaming availability across major platforms including Netflix, Hulu, Max, Prime Video, Disney+, Peacock, and more.
+
+Built with Next.js 16 and designed with a cinematic dark interface, the app features:
+
+- Instant search with live results
+- High-quality posters for popular titles
+- A rich detail modal showing plot summaries, ratings, genres, and clearly organized options for **subscription streaming**, **free/ad-supported viewing**, **rentals**, and **purchases**
+
+The project emphasizes excellent user experience, performance, and security — your Watchmode API key is never exposed to the client. It is fully responsive and works great on both desktop and mobile.
+
+This was built as a personal project to explore clean frontend architecture, API integration, and delightful UI/UX patterns.
+
 ## ✨ Features
 
 - **Instant search** — live results as you type (debounced)
